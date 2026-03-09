@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!-- Author: Narasimman -->
+<html>
+<head>
+    <title>Flights Price Prediction</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: none;
+            border-bottom: 2px solid #007BFF;
+            font-size: 18px;
+            background-color: transparent;
+            color: #333;
+            transition: border-bottom 0.3s ease;
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            border-bottom: 2px solid #0056b3;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p#prediction {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flights Price Prediction</h1>
+        <form action="/predict" method="POST">
+            <!-- <label for="travelCode">Travel Code:</label>
+            <input type="number" name="travelCode" placeholder="Enter Travel Code" value="0">
+
+            <label for="userCode">User Code:</label>
+            <input type="number" name="userCode" placeholder="Enter User Code" value="0"> -->
+
+            <label for="from">From:</label>
+            <select name="from">
+                <option value="Recife (PE)">Recife (PE)</option>
+                <option value="Florianopolis (SC)">Florianopolis (SC)</option>
+                <option value="Brasilia (DF)">Brasilia (DF)</option>
+                <option value="Aracaju (SE)">Aracaju (SE)</option>
+                <option value="Salvador (BH)">Salvador (BH)</option>
+                <option value="Campo Grande (MS)">Campo Grande (MS)</option>
+                <option value="Sao Paulo (SP)">Sao Paulo (SP)</option>
+                <option value="Natal (RN)">Natal (RN)</option>
+                <option value="Rio de Janeiro (RJ)">Rio de Janeiro (RJ)</option>
+            </select>
+
+            <label for="to">To:</label>
+            <select name="to">
+                <option value="Florianopolis (SC)">Florianopolis (SC)</option>
+                <option value="Recife (PE)">Recife (PE)</option>
+                <option value="Brasilia (DF)">Brasilia (DF)</option>
+                <option value="Salvador (BH)">Salvador (BH)</option>
+                <option value="Aracaju (SE)">Aracaju (SE)</option>
+                <option value="Campo Grande (MS)">Campo Grande (MS)</option>
+                <option value="Sao Paulo (SP)">Sao Paulo (SP)</option>
+                <option value="Natal (RN)">Natal (RN)</option>
+                <option value="Rio de Janeiro (RJ)">Rio de Janeiro (RJ)</option>
+            </select>
+
+            <label for="flightType">Flight Type:</label>
+            <select name="flightType">
+                <option value="firstClass">First Class</option>
+                <option value="economic">Economic</option>
+                <option value="premium">Premium</option>
+            </select>
+
+            <label for="time">Time:</label>
+            <select name="time">
+                <option value="1.76">1.76</option>
+                <option value="1.66">1.66</option>
+                <option value="2.16">2.16</option>
+                <option value="1.69">1.69</option>
+                <option value="1.11">1.11</option>
+                <option value="1.26">1.26</option>
+                <option value="0.72">0.72</option>
+                <option value="0.67">0.67</option>
+                <option value="0.58">0.58</option>
+                <option value="1.43">1.43</option>
+                <option value="2.05">2.05</option>
+                <option value="1.39">1.39</option>
+                <option value="0.63">0.63</option>
+                <option value="1.02">1.02</option>
+                <option value="0.46">0.46</option>
+                <option value="1.44">1.44</option>
+                <option value="1.55">1.55</option>
+                <option value="2.10">2.10</option>
+                <option value="0.48">0.48</option>
+                <option value="2.30">2.30</option>
+                <option value="1.49">1.49</option>
+                <option value="1.36">1.36</option>
+                <option value="0.44">0.44</option>
+                <option value="0.65">0.65</option>
+                <option value="2.09">2.09</option>
+                <option value="1.04">1.04</option>
+                <option value="0.85">0.85</option>
+                <option value="0.86">0.86</option>
+                <option value="1.46">1.46</option>
+                <option value="1.85">1.85</option>
+                <option value="1.84">1.84</option>
+                <option value="1.21">1.21</option>
+                <option value="2.44">2.44</option>
+            </select>
+
+            <label for="distance">Distance:</label>
+            <input type="number" name="distance" placeholder="Enter Distance" value="676.53">
+
+            <label for="agency">Agency:</label>
+            <select name="agency">
+                <option value="FlyingDrops">FlyingDrops</option>
+                <option value="CloudFy">CloudFy</option>
+                <option value="Rainbow">Rainbow</option>
+            </select>
+
+            <input type="submit" value="Predict">
+        </form>
+        <p id="prediction"></p>
+    </div>
+</body>
+</html>

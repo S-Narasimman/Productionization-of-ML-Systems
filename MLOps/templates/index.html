@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- Author: Narasimman -->
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1, p {
+            color: #007BFF;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <table>
+            <tr>
+                <th>Input Feature</th>
+                <th>Value</th>
+            </tr>
+            {% for feature, value in input_data.items() %}
+            <tr><td>{{ feature }}</td><td>{{ value }}</td></tr>
+            {% endfor %}
+        </table>
+        <p><strong>Predicted Price:</strong> ${{ prediction }}</p>
+        <a href="/">Make Another Prediction</a>
+    </div>
+</body>
+</html>
